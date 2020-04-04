@@ -1,0 +1,90 @@
+
+/*
+https://leonardocolor.io/?colorKeys=%23000000%2C%230093ff%2C%23aee4ff&base=fff9f8&ratios=1%2C1.97%2C2.92%2C4.35%2C6.35%2C10%2C15&mode=CAM02
+
+#aee4ff,#72bcf6,#1d97fd,#2c79c4,#315f90,#2a425c,#1b2430
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+p {
+    margin-bottom: 1em;
+}
+
+body {
+    color: #202020;
+}
+
+.site-header {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.site-header nav ul {
+    list-style: none;
+}
+
+.site-header nav li {
+    display: inline-block;
+    border-left: 1px solid gray;
+    padding-left: 0.5em;
+}
+
+.site-header nav li:first-child {
+    display: inline-block;
+    border-left: none;
+}
+
+.post-body img {
+    max-width: 600px;
+}
+
+.post-body pre {
+    margin-bottom: 1em;
+    white-space: pre-wrap;
+    background: lightyellow;
+    padding: 8px;
+    border: 1px solid brown;
+    line-height: 180%;
+    border-radius: 4px;
+}
+
+article {
+    margin-bottom: 2em;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-container > .main-contents {
+    flex: auto;
+    padding: 0 8px;
+}
+
+.main-container > .sidebar {
+    flex: none;
+    padding: 0 8px;
+    width: 300px;
+}
+
+footer.site-footer {
+    text-align: center;
+}
+
+article.post header {
+    margin-bottom: 1em;
+    color: #909090;
+}
+article.post footer {
+    margin-bottom: 1em;
+    color: #909090;
+}
+

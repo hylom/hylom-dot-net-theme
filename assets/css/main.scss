@@ -1,0 +1,146 @@
+/*
+https://leonardocolor.io/?colorKeys=%23000000%2C%230093ff%2C%23aee4ff&base=fefffe&ratios=1%2C1.1%2C1.97%2C2.92%2C4.35%2C6.35%2C10%2C15&mode=CAM02
+*/
+
+$color-base: #fefffe;
+$color-weakest: #e9f6fc;
+$color-weaker: #78bff6;
+$color-weak: #2a9bfc;
+$color-medium: #2b7cc9;
+$color-strong: #316295;
+$color-stronger: #2b435f;
+$color-strongest: #1d2734;
+
+$size-small: 96%;
+
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 160%;
+}
+
+a {
+    text-decoration: none;
+    color: $color-strong;
+}
+a:hover { text-decoration: underline; }
+a:visited { color: $color-stronger; }
+
+p {
+    margin-bottom: 1em;
+    a { text-decoration: underline; }
+}
+
+body {
+    color: $color-strongest;
+    background: $color-base;
+}
+
+
+.site-header {
+    text-align: center;
+    margin-bottom: 1em;
+    background: $color-strong;
+    color: $color-base;
+
+    a { color: $color-weakest; }
+
+    nav {
+        ul { list-style: none; }
+        li {
+            display: inline-block;
+            border-left: 1px solid gray;
+            padding-left: 0.5em;
+        }
+        li:first-child {
+            display: inline-block;
+            border-left: none;
+        }
+    }
+}
+
+.main-container {
+    padding: 0 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.main-container > .main-contents {
+    flex: auto;
+    padding: 0 8px;
+}
+
+.main-container > .sidebar {
+    flex: none;
+    padding: 0 8px 0 24px;
+    width: 300px;
+}
+
+.post-body {
+    img { max-width: 600px; }
+    pre {
+        margin-bottom: 1em;
+        white-space: pre-wrap;
+        background: $color-weakest;
+        padding: 8px;
+        border: 1px solid $color-stronger;
+        line-height: 180%;
+        border-radius: 4px;
+    }
+}
+
+
+article.post {
+    margin-bottom: 2em;
+    h2 {
+        border-bottom: 1px solid $color-medium;
+    } 
+    header {
+        margin-bottom: 1em;
+        color: $color-medium;
+        .metadata {
+            font-size: $size-small;
+            display: block;
+            text-align: right;
+        }
+    }
+    footer {
+        font-size: $size-small;
+        margin-bottom: 1em;
+        color: $color-medium;
+    }
+}
+
+footer {
+    .site-footer {
+        text-align: center;
+    }
+}
+
+.sidebar-box {
+    margin-bottom: 24px;
+    font-size: 95%;
+    
+    h3 { margin-bottom: 4px; }
+    h4 { margin-bottom: 4px; }
+    .box-contents {
+        margin-bottom: 1.5em;
+    }
+
+}
+
+
+
+dt {
+    display: inline;
+}
+dt::after {
+    content: '：';
+}
+dd {
+    display: inline;
+}
+dd::after {
+    content: '\A';
+    white-space: pre;
+}

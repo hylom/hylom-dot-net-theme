@@ -1,0 +1,19 @@
+<article class="post">
+  <header>
+    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <span class="metadata">posted on {{ .PublishDate.Format "2006/01/02 15:04:05" }}</span>
+  </header>
+  <div class="post-body">
+    {{ .Content }}
+  </div>
+  <footer>
+    {{ with .Params.tags }}
+    <div class="tags">
+      Tags: 
+      {{ range . }}
+      <a href="/tags/{{ . }}">{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </footer>
+</article>

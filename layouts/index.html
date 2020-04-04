@@ -1,28 +1,10 @@
 {{ define "main" }}
 <main>
   <div class="stories">
-    <!-- Ranges through content/posts/*.md -->
-    {{ range .Pages }}
-    <article>
-      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-      <div class="header">
-        <span>posted on {{ .Date.Format "2019/07/09 02:33:31" }}</span>
-      </div>
-      <div class="body">
-        {{ .Content }}
-      </div>
-      <div class="footer">
-        {{ with .Params.tags }}
-        <div class="tags">
-          Tags: 
-          {{ range . }}
-          <span>{{ . }}</span>
-          {{ end }}
-          </div>
-        {{ end }}
-      </div>
-    </article>
+    {{ range first 5 .Site.RegularPages }}
+    {{- partial "article.html" . -}}
     {{ end }}
   </div>
 </main>
 {{ end }}
+
