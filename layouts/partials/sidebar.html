@@ -1,4 +1,18 @@
 <div class="sidebar-box">
+  <h3>site navigation:</h3>
+  <nav>
+    <ul>
+      <li><a href="/about">about</a></li>
+      <li><a href="/tags">tags</a></li>
+      {{ range (where .Site.Sections "Section" "ne" "static") }}
+      <li><a href="{{ .Permalink }}">{{ .Section }}'s</a></li>
+      {{ end }}
+      <!-- <li><a href="/admin/login">login</a></li> -->
+    </ul>
+  </nav>
+</div>
+
+<div class="sidebar-box">
   <h3>hylom.net:</h3>
   <div class="box-contents">
     ライター/エディター/プログラマー/Webディレクター、hylomのブログです。ご興味のある方は<a href="http://twitter.com/hylom">つぶやき</a>や<a href="/about">執筆記事</a>などもどうぞ。

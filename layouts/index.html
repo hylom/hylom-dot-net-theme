@@ -1,7 +1,7 @@
 {{ define "main" }}
 <main>
   <div class="stories">
-    {{ range first 5 .Site.RegularPages }}
+    {{ range first 5 (where .Site.RegularPages "Section" "ne" "static") }}
     {{- partial "article.html" . -}}
     {{ end }}
   </div>
