@@ -1,4 +1,20 @@
 <header class="site-header">
   <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
   <span class="description">&dash; {{ .Site.Params.Description }}</span>
+  <div id="micro-nav">
+    <a href="/about">about</a> / <a href="/tags">tags</a>
+     / archive:
+    <select id="nav-archive-selector">
+      <option value="#">▼</option>
+      {{ range (where .Site.Sections "Section" "ne" "static") }}
+      <option value="{{ .Permalink }}">{{ .Section }}</option>
+      {{ end }}
+      <!-- <li><a href="/admin/login">login</a></li> -->
+    </select>
+  </div>
 </header>
+<script>
+  window.addEventListener('load', function (e) {
+  document.getElementById("nav-archive-selector").addEventListener('change', function (el) { window.location = el.target.value; });
+  });
+</script>

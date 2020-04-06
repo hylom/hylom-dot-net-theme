@@ -10,7 +10,21 @@
   <div class="stories">
     <!-- Ranges through content/posts/*.md -->
     {{ range .Pages }}
-    {{- partial "article.html" . -}}
+    <article class="post">
+      <header>
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      </header>
+      <div class="post-body">
+        {{ .Content }}
+        <ul>
+        {{ range .Pages }}
+        <li><A href="{{ .Permalink }}">{{ .Title }}</a>（{{ .Date.Format "2006/01/02" }}）</li>
+        {{ end }}
+        </ul>
+      </div>
+      <footer>
+      </footer>
+    </article>
     {{ end }}
   </div>
 </main>

@@ -5,7 +5,7 @@
       <li><a href="/about">about</a></li>
       <li><a href="/tags">tags</a></li>
       {{ range (where .Site.Sections "Section" "ne" "static") }}
-      <li><a href="{{ .Permalink }}">{{ .Section }}'s</a></li>
+      <li><a href="{{ .Permalink }}">{{ .Section }}</a></li>
       {{ end }}
       <!-- <li><a href="/admin/login">login</a></li> -->
     </ul>

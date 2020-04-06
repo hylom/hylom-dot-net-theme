@@ -12,6 +12,7 @@ $color-stronger: #2b435f;
 $color-strongest: #1d2734;
 
 $size-small: 96%;
+$size-smaller: 90%;
 $border-color: $color-weaker;
 $content-margin-bottom: 1em;
 
@@ -63,13 +64,12 @@ body {
     width: 960px;
     margin: 0 auto;
 }
-
-.main-container > .main-contents {
+main-contents {
     flex: auto;
     padding: 0 8px;
 }
 
-.main-container > .sidebar {
+.sidebar {
     flex: none;
     padding: 0 8px 0 24px;
     width: 300px;
@@ -110,6 +110,7 @@ body {
 
 article.post {
     margin-bottom: 2em;
+    border-bottom: $color-weaker dashed 1px;
     h2 {
         border-bottom: 1px solid $border-color;
     }
@@ -131,9 +132,11 @@ article.post {
         margin-bottom: 1em;
         color: $color-medium;
     }
+
 }
 
 footer {
+    font-size: 80%;
     .site-footer {
         text-align: center;
     }
@@ -171,7 +174,53 @@ dd::after {
 }
 
 .site-footer {
-    border-top: 1px solid $color-weaker;
+    border-top: 1px dashed $color-weaker;
     color: $color-medium;
     text-align: center;
+}
+
+#micro-nav {
+    display: none;
+    width: 90%;
+    text-align: center;
+    padding: 0;
+    margin: 4px auto;
+    border-top: 1px solid $color-medium;
+}
+
+@media screen and (max-width: 480px) {
+    p, h2, pre {
+        word-wrap: break-word;
+    }
+    #micro-nav { display: block; }
+    article.post h2 {
+        font-size: 120%;
+        line-height: 105%;
+    }
+    .site-header h1 {
+        display: block;
+    }
+    .main-container {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .main-contents {
+        flex: none;
+        padding: 0 1em;
+    }
+    .sidebar {
+        flex: none;
+        width: 100%;
+        padding: 0;
+    }
+    .sidebar-box {
+        padding: 0 1em;
+    }
+
+    pre {
+        white-space: pre;
+        overflow: scroll;
+    }
 }
