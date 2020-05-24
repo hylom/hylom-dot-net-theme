@@ -1,0 +1,38 @@
+{{ define "main" }}
+<main>
+  <article>
+    <header>
+      <h1 class="list-title">
+        {{ if (eq .Kind "section") }}
+        記事一覧：{{ .Section }}年
+        {{ else if (eq .Kind "taxonomy") }}
+        記事一覧：「{{ .Title }}」タグ
+        {{ else }}
+        タグ別の記事一覧
+        {{ end }}
+    </header>
+    <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
+    {{.Content}}
+  </article>
+  <div class="stories">
+    <!-- Ranges through content/posts/*.md -->
+    {{ range .Pages }}
+    <article class="post">
+      <header>
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      </header>
+      <div class="post-body">
+        {{ .Content }}
+        <ul>
+        {{ range .Pages }}
+        <li><A href="{{ .Permalink }}">{{ .Title }}</a>（{{ .Date.Format "2006/01/02" }}）</li>
+        {{ end }}
+        </ul>
+      </div>
+      <footer>
+      </footer>
+    </article>
+    {{ end }}
+  </div>
+</main>
+{{ end }}
