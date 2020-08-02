@@ -1,11 +1,47 @@
 <head>
-  <title>{{ .Site.Title }}</title>
-  {{ $style := resources.Get "css/main.scss" | toCSS }}
+  {{- $title := .Site.Title }}
+  {{- $description := .Site.Params.description }}
+  {{- $keywords := .Site.Params.keywords }}
+
+  {{- if (eq .Kind "taxonomyTerm") }}
+  {{- $title = printf "タグ別記事一覧 - %s" .Site.Title }}
+  {{- else if (eq .Kind "home") }}
+  {{- $title = printf "%s - %s" .Title .Site.Params.description }}
+  {{- else if (eq .Kind "section") }}
+  {{- $title = printf "%s年の記事一覧 - %s" .Section .Site.Title }}
+  {{- else }}
+  {{- $title = printf "%s - %s" .Title .Site.Title }}
+  {{- $description = (or .Page.Description (truncate 180 .Page.Content)) }}
+  {{- end }}
+
+
+  <title>{{ $title }}</title>
+  <meta property="og:title" content="{{ $title }}" />
+
+  {{- $style := resources.Get "css/main.scss" | toCSS }}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <link rel="stylesheet" href="{{ $style.Permalink }}">
   <link rel="author" href="https://plus.google.com/115759524056726415451?rel=author">
-  <meta name="description" content="{{ .Site.Params.description }}" />
-  <meta name="keywords" content="{{ .Site.Params.keywords }}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:site_name" content="hylom's" />
+  <meta name="description" content="{{ $description }}" />
+  <meta property="og:description" content="{{ $description }}" />
+
+  {{- define "keywords" }}
+  {{- if .Page.Keywords }}
+  {{ .Page.Keywords }}
+  {{- else if .Params.tags }}
+  {{- range $index, $el := .Params.tags }}{{ if $index}}, {{ end }}{{ $el }}{{ end }}
+  {{- else if .Site.Params.keywords }}
+  {{- .Site.Params.keywords }}
+  {{- end }}
+  {{- end }}
+  <meta name="keywords" content='{{ template "keywords" . }}' />
+  
   <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -16,4 +52,7 @@
     // ga('create', 'UA-10158631-2', 'auto');
     // ga('send', 'pageview');
   </script>
+
+  <script src="/js/main.js"></script>
+ 
 </head>

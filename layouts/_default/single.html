@@ -1,3 +1,22 @@
 {{ define "main" }}
 {{- partial "article.html" . -}}
+
+<div class="article-navigation">
+  {{ with .Prev }}
+  <div class="prev">
+    <div class="nav-title">前の記事：</div>
+    <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+  </div>
+  {{ end }}
+
+  {{ with .Next }}
+  <div class="next">
+    <div class="nav-title">次の記事：</div>
+    <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+  </div>
+  {{ end }}
+
+
+</div>
+
 {{ end }}
