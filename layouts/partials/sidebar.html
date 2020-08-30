@@ -3,7 +3,7 @@
   <nav>
     <ul>
       <li><a href="/about">about</a></li>
-      <li><a href="/tags">tags</a></li>
+      <li><a href="/tag">tag</a></li>
       {{ range (where .Site.Sections "Section" "ne" "static") }}
       <li><a href="{{ .Permalink }}">{{ .Section }}</a></li>
       {{ end }}
