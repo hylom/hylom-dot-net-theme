@@ -4,7 +4,11 @@
     <header>
       <h1 class="list-title">
         {{ if (eq .Kind "section") }}
+          {{ if .Title }}
+        記事一覧：{{ .Title }}
+          {{ else }}
         記事一覧：{{ .Section }}年
+          {{ end }}
         {{ else if (eq .Kind "taxonomy") }}
         記事一覧：「{{ .Title }}」タグ
         {{ else }}

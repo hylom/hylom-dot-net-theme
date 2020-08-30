@@ -1,17 +1,22 @@
 <head>
+  <meta charset="UTF-8"> 
   {{- $title := .Site.Title }}
   {{- $description := .Site.Params.description }}
   {{- $keywords := .Site.Params.keywords }}
 
   {{- if (eq .Kind "taxonomyTerm") }}
-  {{- $title = printf "タグ別記事一覧 - %s" .Site.Title }}
+    {{- $title = printf "タグ別記事一覧 - %s" .Site.Title }}
   {{- else if (eq .Kind "home") }}
-  {{- $title = printf "%s - %s" .Title .Site.Params.description }}
+    {{- $title = printf "%s - %s" .Title .Site.Params.description }}
   {{- else if (eq .Kind "section") }}
-  {{- $title = printf "%s年の記事一覧 - %s" .Section .Site.Title }}
+    {{- if .Title }}
+      {{- $title = printf "%sの記事一覧 - %s" .Title .Site.Title }}
+    {{- else }}
+      {{- $title = printf "%s年の記事一覧 - %s" .Section .Site.Title }}
+    {{- end }}
   {{- else }}
-  {{- $title = printf "%s - %s" .Title .Site.Title }}
-  {{- $description = (or .Page.Description (truncate 180 .Page.Content)) }}
+    {{- $title = printf "%s - %s" .Title .Site.Title }}
+    {{- $description = (or .Page.Description (truncate 180 .Page.Content)) }}
   {{- end }}
 
 
@@ -34,8 +39,8 @@
   {{- define "keywords" }}
   {{- if .Page.Keywords }}
   {{ .Page.Keywords }}
-  {{- else if .Params.tags }}
-  {{- range $index, $el := .Params.tags }}{{ if $index}}, {{ end }}{{ $el }}{{ end }}
+  {{- else if .Params.tag }}
+  {{- range $index, $el := .Params.tag }}{{ if $index}}, {{ end }}{{ $el }}{{ end }}
   {{- else if .Site.Params.keywords }}
   {{- .Site.Params.keywords }}
   {{- end }}
